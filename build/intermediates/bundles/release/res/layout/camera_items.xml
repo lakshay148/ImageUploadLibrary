@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/camera_preview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+    <ScrollView
+        android:layout_width="@dimen/image_scroll_width"
+        android:fillViewport="true"
+        android:layout_alignParentLeft="true"
+        android:layout_height="match_parent">
+
+        <!--<LinearLayout-->
+            <!--android:id="@+id/llCapturedImages"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_height="wrap_content">-->
+        <!--</LinearLayout>-->
+
+        <ListView
+            android:id="@+id/lvCapturedImages"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            </ListView>
+        </ScrollView>
+
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/bBack"
+            android:src="@drawable/ic_menu_back"
+            android:layout_width="@dimen/camera_button_width"
+            android:layout_height="@dimen/camera_button_height"
+             />
+        <ImageView
+            android:id="@+id/button_capture"
+            android:src="@drawable/ic_menu_camera"
+            android:layout_width="@dimen/camera_button_width"
+            android:layout_height="@dimen/camera_button_height"
+            />
+        <ImageView
+            android:id="@+id/bDone"
+            android:src="@drawable/ic_action_done"
+            android:layout_width="@dimen/camera_button_width"
+            android:layout_height="@dimen/camera_button_height" />
+        </LinearLayout>
+
+
+</RelativeLayout><!-- From: file:/C:/Users/Lakshay/AndroidStudioProjects/android/Test/imageuploadlibrary2/src/main/res/layout/camera_items.xml -->

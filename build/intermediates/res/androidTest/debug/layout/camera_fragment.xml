@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/llActions"
+        android:layout_margin="@dimen/default_margin"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="75dp">
+
+        <Button
+            android:id="@+id/bTakePhoto"
+            android:text="Take Photo"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/bFromGallery"
+            android:text="Choose From Gallery"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <!--<GridView-->
+        <!--android:layout_margin="@dimen/default_margin"-->
+        <!--android:id="@+id/gvPhotos"-->
+        <!--android:columnWidth="@dimen/grid_column_width"-->
+        <!--android:numColumns="auto_fit"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:verticalSpacing="@dimen/vertical_space_images"-->
+        <!--android:horizontalSpacing="@dimen/horizontal_space_images"-->
+        <!--android:layout_height="wrap_content"></GridView>-->
+
+    <org.askerov.dynamicgrid.DynamicGridView
+        android:id="@+id/gvPhotos"
+        android:layout_below="@+id/llActions"
+        android:numColumns="2"
+        android:verticalSpacing="@dimen/vertical_space_images"
+        android:horizontalSpacing="@dimen/horizontal_space_images"
+        android:layout_width="match_parent"
+        android:layout_above="@+id/bUploadPhotos"
+        android:layout_margin="@dimen/default_margin"
+        android:layout_height="wrap_content">
+
+        </org.askerov.dynamicgrid.DynamicGridView>
+
+    <Button
+        android:id="@+id/bUploadPhotos"
+        android:layout_alignParentBottom="true"
+        android:text="Upload"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_button_height" />
+
+</RelativeLayout><!-- From: file:/C:/Users/Lakshay/AndroidStudioProjects/android/Test/imageuploadlibrary2/src/main/res/layout/camera_fragment.xml --><!-- From: file:/C:/Users/Lakshay/AndroidStudioProjects/android/Test/imageuploadlibrary2/build/intermediates/bundles/debug/res/layout/camera_fragment.xml -->

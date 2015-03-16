@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <GridView
+        android:layout_margin="5dp"
+        android:id="@+id/gvFolderPhotos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:columnWidth="170dp"
+        android:fitsSystemWindows="true"
+        android:numColumns="auto_fit"
+        android:horizontalSpacing="5dp"
+        android:verticalSpacing="5dp">
+
+    </GridView>
+</RelativeLayout><!-- From: file:/C:/Users/Lakshay/AndroidStudioProjects/android/Test/imageuploadlibrary2/src/main/res/layout/folder_files.xml -->
