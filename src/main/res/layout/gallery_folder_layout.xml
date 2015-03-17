@@ -8,14 +8,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="32dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@color/tranparent_black"
+        android:layout_alignParentBottom="true">
     <TextView
         android:id="@+id/tvFolderName"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
+        android:layout_weight="1"
         android:text="Folder"
-        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="5dp"
         android:textColor="@color/white"
-        android:gravity="center"
-        android:background="@color/tranparent_black"
+        android:gravity="center_vertical|left"
+
         android:layout_height="30dp" />
 
     <TextView
@@ -23,6 +31,8 @@
         android:gravity="center"
         android:layout_centerInParent="true"
         android:layout_width="30dp"
+        android:layout_marginLeft="5dp"
         android:background="@drawable/files_count"
         android:layout_height="30dp" />
+    </LinearLayout>
 </RelativeLayout>

@@ -166,5 +166,6 @@ public class CameraItemsFragment extends Fragment implements View.OnClickListene
             }
         }
     }
+
 }
 

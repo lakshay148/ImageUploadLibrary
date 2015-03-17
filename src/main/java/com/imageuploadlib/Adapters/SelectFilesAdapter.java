@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 
 import com.bumptech.glide.Glide;
@@ -64,16 +66,18 @@ public class SelectFilesAdapter extends BaseAdapter implements View.OnClickListe
         if(fileInfo.getSelected())
         {
             fileInfo.setSelected(false);
-            holder.selectedCheckBox.setChecked(false);
+           // holder.selectedCheckBox.setChecked(false);
             holder.transparentLayer.setVisibility(View.INVISIBLE);
+            holder.selection_view.setVisibility(View.INVISIBLE);
             this.updateSelection.updateSelected(fileInfo,false);
         }
         else
         {
             fileInfo.setSelected(true);
             holder.transparentLayer.setVisibility(View.VISIBLE);
+            holder.selection_view.setVisibility(View.VISIBLE);
             holder.selectedImage.setBackgroundColor(context.getResources().getColor(R.color.transparent_white));
-            holder.selectedCheckBox.setChecked(true);
+           // holder.selectedCheckBox.setChecked(true);
             this.updateSelection.updateSelected(fileInfo,true);
         }
     }
@@ -81,9 +85,12 @@ public class SelectFilesAdapter extends BaseAdapter implements View.OnClickListe
     public class FilesHolder
     {
         ImageView selectedImage;
-        CheckBox selectedCheckBox;
+       // CheckBox selectedCheckBox;
         View transparentLayer;
+        ImageView selection_view;
     }
+
+
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -96,7 +103,8 @@ public class SelectFilesAdapter extends BaseAdapter implements View.OnClickListe
             convertView = inflater.inflate(R.layout.select_files,null);
             filesHolder = new FilesHolder();
             filesHolder.selectedImage = (ImageView) convertView.findViewById(R.id.imageSelected);
-            filesHolder.selectedCheckBox = (CheckBox) convertView.findViewById(R.id.cbSelectedImage);
+           // filesHolder.selectedCheckBox = (CheckBox) convertView.findViewById(R.id.cbSelectedImage);
+            filesHolder.selection_view = (ImageView) convertView.findViewById(R.id.selection_view);
             filesHolder.transparentLayer = convertView.findViewById(R.id.vTransparentLayer);
             convertView.setTag( filesHolder);
         }
@@ -112,17 +120,22 @@ public class SelectFilesAdapter extends BaseAdapter implements View.OnClickListe
                 .into(filesHolder.selectedImage);
 
         Log.e(TAG, fileInfo.getDisplayName());
-        if(fileInfo != null)
+
+     /*   RelativeLayout rLGreen = ((RelativeLayout) filesHolder.transparentLayer.getParent());
+        rLGreen.setLayoutParams(new RelativeLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.FILL_PARENT));
+       */ if(fileInfo != null)
         {
             if(fileInfo.getSelected())
             {
                 filesHolder.transparentLayer.setVisibility(View.VISIBLE);
-                filesHolder.selectedCheckBox.setChecked(true);
+                filesHolder.selection_view.setVisibility(View.VISIBLE);
+               // filesHolder.selectedCheckBox.setChecked(true);
             }
             else
             {
                 filesHolder.transparentLayer.setVisibility(View.INVISIBLE);
-                filesHolder.selectedCheckBox.setChecked(false);
+                filesHolder.selection_view.setVisibility(View.INVISIBLE);
+               // filesHolder.selectedCheckBox.setChecked(false);
             }
         }
         return convertView;
