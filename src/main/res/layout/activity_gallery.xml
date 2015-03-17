@@ -9,7 +9,7 @@
         android:id="@+id/gvFolders"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:columnWidth="150dp"
+        android:columnWidth="@dimen/grid_column_width"
         android:horizontalSpacing="10dp"
         android:numColumns="auto_fit"
         android:verticalSpacing="15dp"></GridView>
