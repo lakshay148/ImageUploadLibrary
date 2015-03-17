@@ -24,13 +24,14 @@
         android:layout_height="wrap_content" />-->
 
 
-    <View
+    <ImageView
         android:id="@+id/vTransparentLayer"
         android:visibility="gone"
-        android:background="@color/tranparent_black"
-        android:layout_width="@dimen/grid_column_width"
+        android:src="@color/tranparent_black"
+        android:layout_width="match_parent"
         android:fitsSystemWindows="true"
-        android:layout_height="@dimen/grid_column_width" />
+        android:adjustViewBounds="true"
+        android:layout_height="match_parent" />
     <ImageView
         android:id="@+id/selection_view"
         android:visibility="gone"

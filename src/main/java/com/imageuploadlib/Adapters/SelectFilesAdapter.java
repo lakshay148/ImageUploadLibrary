@@ -86,7 +86,7 @@ public class SelectFilesAdapter extends BaseAdapter implements View.OnClickListe
     {
         ImageView selectedImage;
        // CheckBox selectedCheckBox;
-        View transparentLayer;
+        ImageView transparentLayer;
         ImageView selection_view;
     }
 
@@ -105,7 +105,7 @@ public class SelectFilesAdapter extends BaseAdapter implements View.OnClickListe
             filesHolder.selectedImage = (ImageView) convertView.findViewById(R.id.imageSelected);
            // filesHolder.selectedCheckBox = (CheckBox) convertView.findViewById(R.id.cbSelectedImage);
             filesHolder.selection_view = (ImageView) convertView.findViewById(R.id.selection_view);
-            filesHolder.transparentLayer = convertView.findViewById(R.id.vTransparentLayer);
+            filesHolder.transparentLayer = (ImageView)convertView.findViewById(R.id.vTransparentLayer);
             convertView.setTag( filesHolder);
         }
 
