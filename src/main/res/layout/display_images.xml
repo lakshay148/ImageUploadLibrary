@@ -5,15 +5,34 @@
 
     <ImageView
         android:id="@+id/ivImageDisplay"
+        android:adjustViewBounds="true"
         android:src="@drawable/background_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+
+    <View
+        android:id="@+id/viewTransaparent"
+        android:layout_width="@dimen/transparent_layer_width"
+        android:fitsSystemWindows="true"
+        android:background="@color/tranparent_black"
+        android:layout_height="@dimen/transparent_layer_width" />
 
     <ImageView
         android:id="@+id/ivRemoveImage"
         android:layout_alignParentRight="true"
         android:src="@drawable/close_layer"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <TextView
+        android:textColor="@color/white"
+        android:text="Profile Photo"
+        android:gravity="center"
+        android:id="@+id/tvProfilePhoto"
+        android:layout_width="match_parent"
+        android:layout_centerInParent="true"
         android:layout_height="wrap_content" />
 
 </RelativeLayout>

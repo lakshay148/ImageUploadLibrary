@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="@dimen/grid_column_width"
     android:id="@+id/rlSelectFiles"
     android:layout_height="@dimen/grid_column_width">
-
-
 
     <ImageView
         android:id="@+id/imageSelected"
@@ -28,14 +25,14 @@
         android:id="@+id/vTransparentLayer"
         android:visibility="gone"
         android:background="@color/tranparent_black"
-        android:layout_width="@dimen/grid_column_width"
+        android:layout_width="@dimen/transparent_layer_width"
         android:fitsSystemWindows="true"
-        android:layout_height="@dimen/grid_column_width" />
+        android:layout_height="@dimen/transparent_layer_width" />
     <ImageView
         android:id="@+id/selection_view"
         android:visibility="gone"
         android:layout_width="wrap_content"
-        android:src="@drawable/selected_checkbox"
+        android:src="@drawable/ic_action_done"
         android:layout_centerInParent="true"
         android:layout_height="wrap_content" />
 </RelativeLayout>

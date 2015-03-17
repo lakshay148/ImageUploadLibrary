@@ -3,7 +3,10 @@ package com.imageuploadlib.Service;
 import android.app.IntentService;
 import android.content.Intent;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.imageuploadlib.R;
+import com.imageuploadlib.Utils.CommonUtils;
 import com.imageuploadlib.Utils.Constants;
 import com.imageuploadlib.Utils.FileInfo;
 
@@ -36,17 +39,17 @@ public class ImageUploadService extends IntentService {
      */
 
     private ArrayList<FileInfo> imagesList ;
-    public ImageUploadService(String name) {
-        super(name);
+    public ImageUploadService() {
+        super("Image Upload Service");
     }
 
     @Override
     protected void onHandleIntent(Intent intent) {
 
+        Toast.makeText(getApplicationContext(), "Image Upload Started", Toast.LENGTH_SHORT).show();
         imagesList = (ArrayList<FileInfo>) intent.getSerializableExtra(Constants.IMAGES_TO_UPLOAD);
         for (int i = 0; i<imagesList.size(); i++)
         {
-
             Log.e(TAG , "image being uploaded : "+ i );
             HttpClient httpClient = new DefaultHttpClient();
             HttpContext httpContext = new BasicHttpContext();
@@ -63,8 +66,8 @@ public class ImageUploadService extends IntentService {
             multipartContent.addPart("stockImg", fileBody);
 
             Log.e("MultiPartcontent ", multipartContent.toString());
-//            Log.e("Source , file_name , car_id ,api_key , ucdid , username ,SERVICE_EXECUTIVE_LOGIN , APP_VERSION", new StringBody(String.valueOf(CommonUtils.getIntSharedPreference(this, Constants.UC_DEALER_ID, -1))) + "," + new StringBody(CommonUtils.getStringSharedPreference(this, Constants.UC_DEALER_USERNAME, "")) + "," + new StringBody(String.valueOf(CommonUtils.getBooleanSharedPreference(this, Constants.SERVICE_EXECUTIVE_LOGIN, false))) + "," + new StringBody(CommonUtils.getStringSharedPreference(this, Constants.APP_VERSION_CODE, "")));
             httpPost.setEntity(multipartContent);
+            CommonUtils.createNotification(getApplicationContext(), R.drawable.image_load_default_small,"Image Upload Lib" ,"Image being uploaded", new Intent(), 1);
             HttpResponse response = null;
             try {
                 response = httpClient.execute(httpPost, httpContext);
