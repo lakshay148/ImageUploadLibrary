@@ -40,6 +40,7 @@ public class CameraActivity extends Activity implements View.OnClickListener,Cam
     private Camera camera;
     private ImageView capturedImageView;
     private LinearLayout llCapturedImages;
+
     private ArrayList<FileInfo> imagesList = new ArrayList<FileInfo>();
     private CapturedImagesAdapter imagesAdapter;
     private ListView lvCaptureImages;
@@ -50,24 +51,12 @@ public class CameraActivity extends Activity implements View.OnClickListener,Cam
         setContentView(R.layout.camera_items);
 
         PhotoUploadParams params = (PhotoUploadParams) getIntent().getSerializableExtra(CameraItemsFragment.PHOTO_PARAMS);
-
         CameraOrientation orientation = params.getOrientation();
-        if(orientation.equals(CameraOrientation.LANDSCAPE))
-        {
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        }
-        else if (orientation.equals(CameraOrientation.PORTRAIT))
-        {
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        }
+        setOrientation(orientation);
 
         try {
-//            CameraManager cameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
-            // attempt to get a Camera instance
-//            cameraManager.openCamera("Camera", null , null);
             camera = Camera.open();
         } catch (Exception e) {
-            // Camera is not available (in use or does not exist)
             Log.e("Camera Open Exception", "" + e.getMessage());
         }
 
@@ -88,6 +77,20 @@ public class CameraActivity extends Activity implements View.OnClickListener,Cam
         imagesAdapter = new CapturedImagesAdapter(this, imagesList );
         lvCaptureImages.setAdapter(imagesAdapter);
         imagesAdapter.notifyDataSetChanged();
+    }
+
+    private void setOrientation(CameraOrientation orientation) {
+        if(orientation!=null )
+        {
+            if(orientation.equals(CameraOrientation.LANDSCAPE))
+            {
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+            }
+            else if (orientation.equals(CameraOrientation.PORTRAIT))
+            {
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+            }
+        }
     }
 
     @Override

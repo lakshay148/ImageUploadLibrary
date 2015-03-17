@@ -10,12 +10,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Toast;
 
 import com.imageuploadlib.Activity.CameraActivity;
 import com.imageuploadlib.Activity.GalleryActivity;
 import com.imageuploadlib.Adapters.PhotosGridAdapter;
 import com.imageuploadlib.Interfaces.UpdateSelection;
 import com.imageuploadlib.R;
+import com.imageuploadlib.Service.ImageUploadService;
 import com.imageuploadlib.Utils.ApplicationController;
 import com.imageuploadlib.Utils.Constants;
 import com.imageuploadlib.Utils.FileInfo;
@@ -33,6 +35,7 @@ public class CameraItemsFragment extends Fragment implements View.OnClickListene
     private static final String TAG = "CameraFragment";
     private static final int CODE_CAMERA = 148;
     private static final int CODE_GALLERY = 256;
+    private int maxPhotos = 20;
     public static final String ADD_PHOTOS = "addPhotos";
     public static final String PHOTO_PARAMS = "photoParams";
 
@@ -40,14 +43,6 @@ public class CameraItemsFragment extends Fragment implements View.OnClickListene
     PhotosGridAdapter photosGridAdapter;
 
     PhotoUploadParams params;
-//
-//    public CameraItemsFragment() {
-//        this.params = new PhotoUploadParams(PhotoUploadParams.DEFAULT_API);
-//    }
-
-//    public CameraItemsFragment(PhotoUploadParams params) {
-//        this.params = params;
-//    }
 
     public static CameraItemsFragment newInstance(PhotoUploadParams params)
     {
@@ -67,6 +62,10 @@ public class CameraItemsFragment extends Fragment implements View.OnClickListene
         rootView.findViewById(R.id.bUploadPhotos).setOnClickListener(this);
         setUpPhotosGrid(rootView);
         params = (PhotoUploadParams) getArguments().getSerializable(PHOTO_PARAMS);
+
+        if(params.getNoOfPhotos()>0)
+            maxPhotos = params.getNoOfPhotos();
+
         return rootView;
     }
 
@@ -139,7 +138,12 @@ public class CameraItemsFragment extends Fragment implements View.OnClickListene
         }
         else if(v.getId()==R.id.bUploadPhotos)
         {
-            Intent intent = new Intent();
+            if(ApplicationController.selectedImages.size()>maxPhotos)
+            {
+                Toast.makeText(getActivity().getApplicationContext(),"Maximum photos can be : "+ maxPhotos, Toast.LENGTH_SHORT).show();
+                return;
+            }
+            Intent intent = new Intent(getActivity() , ImageUploadService.class);
             intent.putExtra(Constants.IMAGES_TO_UPLOAD, ApplicationController.selectedImages);
             getActivity().startService(intent);
         }

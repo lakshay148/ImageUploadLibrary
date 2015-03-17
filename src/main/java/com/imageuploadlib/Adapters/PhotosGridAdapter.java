@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 
 import com.bumptech.glide.Glide;
@@ -44,11 +45,25 @@ public class PhotosGridAdapter extends BaseDynamicGridAdapter implements View.On
             holder = new PhotosHolder();
             holder.image = (ImageView) convertView.findViewById(R.id.ivImageDisplay);
             holder.removeImage = (ImageView) convertView.findViewById(R.id.ivRemoveImage);
+            holder.transparentView = convertView.findViewById(R.id.viewTransaparent);
+            holder.tvProfile = (TextView) convertView.findViewById(R.id.tvProfilePhoto);
             convertView.setTag(holder);
         }
         else
         {
             holder = (PhotosHolder) convertView.getTag();
+        }
+        if(position==0)
+        {
+            holder.tvProfile.setVisibility(View.VISIBLE);
+            holder.transparentView.setVisibility(View.VISIBLE);
+            holder.transparentView.setBackgroundColor(context.getResources().getColor(R.color.tranparent_black));
+            holder.image.setBackgroundColor(context.getResources().getColor(R.color.transparent_white));
+        }
+        else
+        {
+            holder.tvProfile.setVisibility(View.GONE);
+            holder.transparentView.setVisibility(View.GONE);
         }
         holder.removeImage.setTag(position);
         holder.removeImage.setOnClickListener(this);
@@ -80,5 +95,7 @@ public class PhotosGridAdapter extends BaseDynamicGridAdapter implements View.On
     private class PhotosHolder {
         ImageView image;
         ImageView removeImage;
+        View transparentView;
+        TextView tvProfile;
     }
 }

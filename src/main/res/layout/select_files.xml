@@ -36,7 +36,7 @@
         android:id="@+id/selection_view"
         android:visibility="gone"
         android:layout_width="wrap_content"
-        android:src="@drawable/selected_checkbox"
+        android:src="@drawable/ic_action_done"
         android:layout_centerInParent="true"
         android:layout_height="wrap_content" />
 </RelativeLayout>
