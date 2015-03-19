@@ -77,8 +77,8 @@ public class ImagesFoldersAdapter extends BaseAdapter {
                 .load("file://"+folders.get(position).getFilePath())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .placeholder(R.drawable.background_image)
+                .centerCrop()
                 .into(holder.imageView);
-
         return convertView;
     }
 }

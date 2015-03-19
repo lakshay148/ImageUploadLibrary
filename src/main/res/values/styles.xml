@@ -26,4 +26,13 @@
         <item name="android:maxLines">2</item>
         <item name="android:ellipsize">end</item>
     </style>
+
+    <style name="gc_dark_textview">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <!--<item name="android:background">@color/gc_button_background</item>-->
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+        <!--<item name="android:textAppearance">@style/TextAppearance.FontPath</item>-->
+    </style>
 </resources>

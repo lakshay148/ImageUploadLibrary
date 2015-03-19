@@ -9,11 +9,35 @@ public class FileInfo implements Serializable{
 
     public enum FILE_TYPE {IMAGE,FOLDER};
 
-
     String filePath;
     FILE_TYPE type;
     String fileName;
     String displayName;
+    Boolean selected;
+    Boolean fromServer;
+    int fileCount;
+
+    public Boolean getFromServer() {
+        return fromServer;
+    }
+
+    public void setFromServer(Boolean fromServer) {
+        this.fromServer = fromServer;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        boolean equals = super.equals(o);
+        if (equals) {
+            return true;
+        }
+        if (o instanceof FileInfo) {
+            if (this.filePath.equals(((FileInfo) o).getFilePath())) {
+                return true;
+            }
+        }
+        return equals;
+    }
 
     public FileInfo() {
         this.selected = false;
@@ -26,9 +50,6 @@ public class FileInfo implements Serializable{
     public void setDisplayName(String displayName) {
         this.displayName = displayName;
     }
-
-    Boolean selected;
-    int fileCount;
 
     public String getFilePath() {
         return filePath;

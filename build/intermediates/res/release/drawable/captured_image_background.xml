@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="rectangle">
-    <!--<gradient android:startColor="#FFFFFF"-->
-        <!--android:endColor="#FFA500"-->
-        <!--android:angle="270" />-->
-    <corners android:radius="3dp" />
-    <stroke android:width="3px" android:color="#ffffff" />
-</shape><!-- From: file:/C:/Users/Lakshay/AndroidStudioProjects/android/Test/imageuploadlibrary2/src/main/res/drawable/captured_image_background.xml -->
